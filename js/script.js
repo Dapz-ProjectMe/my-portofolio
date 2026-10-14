@@ -64,8 +64,8 @@
       const subject = encodeURIComponent(`Pesan portofolio dari ${name}`);
       const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`);
       // Ganti alamat contoh di bawah dengan email aktif sebelum website dipublikasikan.
-      window.location.href = `mailto:daffa@example.com?subject=${subject}&body=${body}`;
-      status.textContent = 'Aplikasi email sedang dibuka. Ganti daffa@example.com di index.html dan js/script.js dengan alamat email aktif sebelum dipublikasikan.';
+      window.location.href = `mailto:daffaxzy5242@gmail.com?subject=${subject}&body=${body}`;
+      status.textContent = 'Aplikasi email sedang dibuka. Ganti daffaxzy5242@gmail.com di index.html dan js/script.js dengan alamat email aktif sebelum dipublikasikan.';
     });
   }
 })();
