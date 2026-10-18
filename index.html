@@ -16,6 +16,45 @@
     <script>
       document.documentElement.classList.add('js');
     </script>
+
+    <!-- ============================================================ -->
+    <!-- AI ASSISTANT WIDGET — SiteSpeakAI                             -->
+    <!-- Cara pakai:                                                   -->
+    <!-- 1. Daftar gratis di https://sitespeak.ai                      -->
+    <!-- 2. Create Chatbot → masukkan URL portofoliomu                 -->
+    <!-- 3. Menu "Install Agent" → Copy Code                           -->
+    <!-- 4. Ganti "GANTI_DENGAN_ID_MILIKMU" di DUA tempat di bawah     -->
+    <!--    dengan chatbotId milikmu                                   -->
+    <!-- 5. Simpan & commit                                            -->
+    <!-- ============================================================ -->
+    <script>
+      window.sitespeakSettings = { chatbotId: "7347ebc0-5173-415d-bff1-33f04a5b0cfb.js" };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://sitespeak.ai/chatbots/7347ebc0-5173-415d-bff1-33f04a5b0cfb.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'sitespeak-sdk'));
+    </script>
+    <!-- ==================== END AI WIDGET ========================= -->
+
+    <!-- ============================================================ -->
+    <!-- OPSIONAL: Widget DUMMY untuk tes posisi tombol chat           -->
+    <!-- Hapus komentar di bawah ini (buang <!-- dan -->) kalau mau    -->
+    <!-- lihat preview tombol sebelum daftar SiteSpeakAI.              -->
+    <!-- JANGAN aktifkan bersamaan dengan widget SiteSpeakAI di atas.  -->
+    <!-- ============================================================ -->
+    <!--
+    <div id="ai-widget-dummy" style="position:fixed;bottom:24px;right:24px;z-index:9999;">
+      <button onclick="alert('AI Assistant akan muncul di sini setelah SiteSpeakAI dipasang!')"
+        style="width:60px;height:60px;border-radius:50%;background:#2563eb;color:#fff;
+               border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+        💬
+      </button>
+    </div>
+    -->
+    <!-- ==================== END DUMMY WIDGET ====================== -->
   </head>
   <body>
     <div class="grain" aria-hidden="true">
@@ -743,4 +782,4 @@
     <script src="js/script.js">
     </script>
   </body>
-</html>
+                  </html>
