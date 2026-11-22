@@ -1,0 +1,120 @@
+/* ============================================================
+   LIQUID GLASS — layer tambahan, dimuat SETELAH css/style.css
+   Warna dasar tetap #202125 / #17181c (Modern Monochrome).
+   Hapus <link> file ini di index.html untuk mengembalikan tampilan asli.
+   ============================================================ */
+
+:root {
+  --lg-edge: rgba(255, 255, 255, .2);
+  --lg-hi: rgba(255, 255, 255, .34);
+  --lg-fill: linear-gradient(135deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .025));
+  --lg-blur: blur(20px) saturate(1.6);
+  --lg-gel: cubic-bezier(.34, 1.45, .64, 1);
+}
+
+/* cahaya latar monokrom, supaya kaca punya sesuatu untuk dibiaskan */
+.lg-ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.lg-ambient::before,
+.lg-ambient::after {
+  content: ""; position: absolute; border-radius: 50%; filter: blur(90px);
+  animation: lg-drift 34s ease-in-out infinite alternate;
+}
+.lg-ambient::before { width: 46vmax; height: 46vmax; left: -12vmax; top: -8vmax; background: rgba(255, 255, 255, .07); }
+.lg-ambient::after { width: 40vmax; height: 40vmax; right: -10vmax; bottom: -12vmax; background: rgba(190, 200, 230, .06); animation-delay: -14s; }
+@keyframes lg-drift { to { transform: translate(7vmax, 5vmax) scale(1.15); } }
+
+/* header saat di-scroll */
+.site-header.is-scrolled {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02));
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  border-bottom-color: var(--lg-edge);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .06), 0 18px 40px -24px rgba(0, 0, 0, .6);
+}
+
+/* menu: kapsul kaca + pil yang meluncur (hanya desktop, kelas diset oleh JS) */
+.nav.lg-desktop {
+  position: relative; gap: 0; padding: 4px;
+  border: 1px solid var(--lg-edge); border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .09));
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .08);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+}
+.nav.lg-desktop a { position: relative; z-index: 1; padding: 9px 18px; border-radius: 999px; transition: color .5s; }
+.nav.lg-desktop a::after { display: none; }
+.lg-pill {
+  position: absolute; top: 4px; bottom: 4px; left: 0; width: 0;
+  border-radius: 999px; pointer-events: none; opacity: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .08));
+  border: 1px solid var(--lg-hi);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -8px 12px rgba(255, 255, 255, .06), 0 10px 22px -8px rgba(0, 0, 0, .6);
+  transition: transform .65s var(--lg-gel), width .65s var(--lg-gel), opacity .4s;
+}
+.lg-pill.on { opacity: 1; }
+
+/* tombol */
+.header-cta {
+  border-radius: 999px; border-color: var(--lg-edge); background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+.circle-link {
+  border-color: var(--lg-edge); background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 14px 30px -12px rgba(0, 0, 0, .6);
+}
+
+/* kartu proyek */
+.project-card {
+  border-radius: 30px; border-color: var(--lg-edge); background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 30px 70px -24px rgba(0, 0, 0, .65);
+}
+.project-card:hover {
+  border-color: rgba(255, 255, 255, .32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 40px 80px -24px rgba(0, 0, 0, .7);
+}
+.project-card::after {
+  content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 55% at 10% 0%, rgba(255, 255, 255, .1), transparent 55%);
+}
+
+/* statistik, skill, form */
+.about-stats > div {
+  padding: 18px 22px; border: 1px solid var(--lg-edge); border-radius: 22px; background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+.skill-list { display: grid; gap: 10px; }
+.skill-list > div,
+.skill-list > div:first-child {
+  padding: 20px 22px; border: 1px solid var(--lg-edge); border-radius: 22px; background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+  transition: padding-left .6s var(--ease-premium), border-color .5s ease, background .5s ease;
+}
+.skill-list > div:hover {
+  padding-left: 28px; border-color: rgba(255, 255, 255, .34);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .04));
+}
+.contact-form {
+  border: 1px solid var(--lg-edge); border-radius: 28px; background: var(--lg-fill);
+  backdrop-filter: var(--lg-blur); -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 30px 70px -26px rgba(0, 0, 0, .6);
+}
+
+/* .reveal bawaan memakai filter: blur(0) setelah muncul. Filter itu memutus
+   backdrop-filter pada elemen anak (kartu statistik, baris skill), jadi dihapus. */
+.js .reveal.is-visible { filter: none; }
+
+/* header menempel di atas supaya kapsul menu dan pilnya tetap terlihat saat scroll */
+.site-header { position: sticky; top: 0; }
+.site-header.is-scrolled { border-radius: 0 0 28px 28px; }
+
+@media (max-width: 760px) {
+  .nav.lg-desktop a { padding: 8px 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-pill { transition: none; }
+  .lg-ambient::before, .lg-ambient::after { animation: none; }
+}
